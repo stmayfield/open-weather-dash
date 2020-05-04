@@ -1,4 +1,4 @@
-# 00 Application Title
+# 06 Server-Side APIs: Weather Dashboard
 
 Summary here
 
@@ -12,9 +12,9 @@ Summary here
 
 The following will be submitted for review:
 
-* [Github.io: Deployed Application](#)
+* [Github.io: Deployed Application](https://stmayfield.github.io/open-weather-dash/)
 
-* [Github.com: Repository](#)
+* [Github.com: Repository](https://github.com/stmayfield/open-weather-dash/)
 
 - - -
 
