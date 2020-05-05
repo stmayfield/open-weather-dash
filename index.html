@@ -4,53 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Page Title</title>
+    <title>Weather Dashboard</title>
     <!-- CSS Stylesheet SRC -->
     <link rel="stylesheet" href="assets/style/reset.css">
     <link rel="stylesheet" href="assets/style/style.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <!-- JavaScript SRC -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/script.js"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Bootstrap JS CDN -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <!-- JavaScript SRC -->
-    <script src="assets/js/script.js"></script>
 </head>
 
 <body>
-    <div class="container">
+
+
+
+    <body>
+
+
+
+        <div id="sidebar" class="sidenav">
+            <a class="closebtn"><i class="fas fa-times"></i></a>
+            <div class="sidebar-header">
+                <h3>Weather Search</h3>
+            </div>
+
+
+
+            <div class="search-bar">
+                <input type="text" placeholder="Seach Location..." name="search" id="search">
+                <button type="submit"><i class="fas fa-search-location"></i>
+                </button>
+            </div>
+            <ul class="recent-list">
+                <li><a href="#">Sacramento, CA</a></li>
+                <li><a href="#">Sacramento, CA</a></li>
+                <li><a href="#">Sacramento, CA</a></li>
+                <li><a href="#">Sacramento, CA</a></li>
+                <li><a href="#">Sacramento, CA</a></li>
+                <li><a href="#">Sacramento, CA</a></li>
+            </ul>
+        </div>
+
+        <div id="main">
+
+            <span class="openbtn"><i class="fas fa-bars"></i>
+            </span>
+
+            <nav>
+                <h1>Weather Dashboard</h1>
+            </nav>
+
+            <div class="top-main" id="weather-info">
+
+
+                <div>City Name </div>
+                <div>Temperature </div>
+                <div>Humidity</div>
+                <div>Wind Speed</div>
+                <div>UV Index</div>
+                <div>UV Index</div>
 
 
 
 
 
+            </div>
+
+            <div class="top-main" id="weather-forecast">
+                <div id="weather-info">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam at ut maiores quidem omnis qui
+                        sed
+                        consequatur dignissimos laudantium rem fugit corporis repellat nemo dolorum voluptates, beatae,
+                        esse
+                        dicta quis!</p>
+                </div>
+            </div>
+
+        </div>
 
 
 
+    </body>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
 
 </body>
 
