@@ -18,6 +18,19 @@ body {
 
 .top-main {
     clear: both;
+    background-color: gray;
+}
+
+.sidebar-header {
+text-align: center;
+}
+
+.search-bar {
+  text-align: center;
+}
+
+.weather-results {
+  font-size: 28px;
 }
 
   .sidenav {
