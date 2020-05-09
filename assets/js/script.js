@@ -27,7 +27,7 @@ $(document).ready(function () {
     var cityName = "Sacramento"
     var state = "CA"
     var country = "US"
-    var queryMainURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + state + "," + country + "&appid=" + apiKey
+    var queryMainURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + state + "," + country + "&appid=" + apiKey
 
 
 
