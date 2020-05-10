@@ -17,6 +17,7 @@ $(document).ready(function () {
         return Math.floor(((((tempConv) - 273.15) * 1.8) + 32)) + "\xB0" + "F";
     }
 
+
     var apiKey = "6ed66ab8536af2098115f5cf3916bab8"
     var cityName = "Sacramento"
     var state = "CA"
@@ -24,7 +25,18 @@ $(document).ready(function () {
     var date = moment().format("dddd, MMMM Do YYYY");
     var queryMainURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + state + "," + country + "&appid=" + apiKey
     var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + state + "," + country + "&appid=" + apiKey
+    var locationInput = ["Sacramento, CA"]
 
+
+
+
+
+
+
+
+
+
+    // OpenWeather API Calls
     $.ajax({
         url: queryMainURL,
         method: "GET"
@@ -46,13 +58,6 @@ $(document).ready(function () {
         }).then(function (response) {
             results("UV Index: ", response.value, "UV-Index");
         });
-
-
-
-
-
-
-
 
     });
 
@@ -85,10 +90,6 @@ $(document).ready(function () {
 
     }
 
-
-
-
-
     $.ajax({
         url: queryForecastURL,
         method: "GET"
@@ -98,19 +99,11 @@ $(document).ready(function () {
 
         for (var i = 0, a = 3; i < 5; i++, a = a + 8) {
             $("#date" + i).text(unixConvert(response.list[a].dt));
-            $("#degree" + i).text(kelvToFarh(response.list[a].main.temp));
+            $("#degree" + i).text(kelvToFarh(response.list[a].main.temp_max));
             $("#humidity" + i).text(response.list[a].main.humidity + "%");
-
-
-
-
             var icon = response.list[a].weather[0].icon
-            $("#icon" + i).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-
+            $("#icon" + i).attr("src", "https://openweathermap.org/img/wn/" + icon + ".png");
         }
-
-
-
     });
 
 
