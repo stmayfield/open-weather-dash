@@ -10,7 +10,11 @@ $(document).ready(function () {
     });
 
     function results(weatherType, weatherCall, weatherID) {
-        $("#weather-info").append(($("<div>").text(weatherType).addClass("weather-results")).append($("<span>").text(weatherCall).attr("id", weatherID)))
+        $("#weather-info").append(($("<div>").text(weatherType).addClass("weather-results")).append($("<span>").html(weatherCall).attr("id", weatherID)))
+    }
+
+    function kelvToFarh(tempConv) {
+        return Math.floor(((((tempConv) - 273.15) * 1.8) + 32)) + "\xB0" + "F";
     }
 
     var apiKey = "6ed66ab8536af2098115f5cf3916bab8"
@@ -19,6 +23,7 @@ $(document).ready(function () {
     var country = "US"
     var date = moment().format("dddd, MMMM Do YYYY");
     var queryMainURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + state + "," + country + "&appid=" + apiKey
+    var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + state + "," + country + "&appid=" + apiKey
 
     $.ajax({
         url: queryMainURL,
@@ -29,7 +34,7 @@ $(document).ready(function () {
         console.log(response);
         console.log(response.id);
         results("Location: ", response.name + ", " + response.sys.country + " (" + date + ")", "location");
-        results("Temperature: ", Math.floor(((((response.main.temp) - 273.15) * 1.8) + 32)) + "\xB0" + "F", "temp");
+        results("Temperature: ", kelvToFarh(response.main.temp), "temp");
         results("Humidity: ", response.main.humidity.toFixed(2) + "%", "humidity");
         results("Wind Speed: ", (response.wind.speed * 2.237).toFixed(2) + " mph", "wind-speed");
 
@@ -41,6 +46,8 @@ $(document).ready(function () {
         }).then(function (response) {
             results("UV Index: ", response.value, "UV-Index");
         });
+
+
 
 
 
@@ -60,13 +67,14 @@ $(document).ready(function () {
             id: "day" + i
         })
         resultsDiv.append(forecastCard);
-        var dayHead = $("<h3>").text("08/16/2019").attr("id", "date" + i);
-        var dayIcon = $("<i>").attr({
-            class: "fas fa-sun",
-            id: "icon" + i
+        var dayHead = $("<h3>").attr("id", "date" + i);
+        var dayIcon = $("<img>").attr({
+            class: "weather-icons",
+            id: "icon" + i,
+            alt: "Icon representing the weather on this day"
         });
         var dateTemp = ($("<p>").text("Temp: ")).append($("<span>").attr("id", "degree" + i).text("86.84 " + "\xB0" + "F"));
-        var dateHumidity = ($("<p>").text("Humidity: ")).append($("<span>").attr("id", "humidity" + i).text("43%"))
+        var dateHumidity = ($("<p>").text("Humidity: ")).append($("<span>").attr("id", "humidity" + i))
         function appendForecast(el) {
             forecastCard.append(el)
         }
@@ -76,6 +84,63 @@ $(document).ready(function () {
         appendForecast(dateHumidity)
 
     }
+
+
+
+
+
+    $.ajax({
+        url: queryForecastURL,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(response)
+
+        for (var i = 0, a = 3; i < 5; i++, a = a + 8) {
+            $("#date" + i).text(unixConvert(response.list[a].dt));
+            $("#degree" + i).text(kelvToFarh(response.list[a].main.temp));
+            $("#humidity" + i).text(response.list[a].main.humidity + "%");
+
+
+
+
+            var icon = response.list[a].weather[0].icon
+            $("#icon" + i).attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+
+        }
+
+
+
+    });
+
+
+
+
+    // Convert Unix Timecode to Date Format
+    function unixConvert(unix) {
+
+        var unixTimestamp = unix
+        var mili = unixTimestamp * 1000
+        var dateObj = new Date(mili)
+        var format = {
+            weekday: "long",
+            month: "short",
+            day: "numeric",
+        }
+        return dateObj.toLocaleString("en-us", format);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
